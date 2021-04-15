@@ -59,7 +59,13 @@ public class Setting<E extends Element, P extends Property> {
   private final StringProperty breadcrumb = new SimpleStringProperty("");
   private String key = "";
 
-  private Setting(String description, E element, P value) {
+  /**
+   * Exposed constructor to handle custom setting initializations.
+   * @param description the title of this setting
+   * @param element the field to render
+   * @param value the constructed setting
+   */
+  public Setting(String description, E element, P value) {
     this.description = description;
     this.element = element;
     this.value = value;
