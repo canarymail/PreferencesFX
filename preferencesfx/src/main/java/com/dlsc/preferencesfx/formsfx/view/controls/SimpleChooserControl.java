@@ -52,15 +52,14 @@ public class SimpleChooserControl extends SimpleControl<StringField, StackPane> 
    * editableField allows users to modify the field's value. - The readOnlyLabel displays the
    * field's value if it is not editable.
    */
-  private TextField editableField;
-  private TextArea editableArea;
-  private Label readOnlyLabel;
-  private Label fieldLabel;
-  private Button chooserButton = new Button();
-  private HBox contentBox = new HBox();
-  private String buttonText;
-  private File initialDirectory;
-  private boolean directory;
+  protected TextField editableField;
+  protected TextArea editableArea;
+  protected Label readOnlyLabel;
+  protected Button chooserButton = new Button();
+  protected HBox contentBox = new HBox();
+  protected String buttonText;
+  protected File initialDirectory;
+  protected boolean directory;
 
   /**
    * Create a new SimpleChooserControl.

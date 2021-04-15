@@ -41,7 +41,7 @@ public class SimpleCheckBoxControl<V> extends SimpleControl<MultiSelectionField<
    * - The checkboxes list contains all the checkboxes to display.
    * - The node is a VBox holding all node.
    */
-  private final List<CheckBox> checkboxes = new ArrayList<>();
+  protected final List<CheckBox> checkboxes = new ArrayList<>();
 
   /**
    * {@inheritDoc}

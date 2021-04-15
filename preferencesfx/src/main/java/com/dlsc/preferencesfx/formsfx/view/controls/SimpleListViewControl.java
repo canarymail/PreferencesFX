@@ -39,13 +39,6 @@ public class SimpleListViewControl<V>
     extends SimpleControl<MultiSelectionField<V>, ListView<String>> {
 
   /**
-   * - The fieldLabel is the container that displays the label property of
-   * the field.
-   * - The node is the container that displays list values.
-   */
-  private Label fieldLabel;
-
-  /**
    * The flag used for setting the selection properly.
    */
   private boolean preventUpdate;

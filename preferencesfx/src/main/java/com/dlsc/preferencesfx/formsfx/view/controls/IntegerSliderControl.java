@@ -22,11 +22,10 @@ public class IntegerSliderControl extends SimpleControl<IntegerField, HBox> {
    * - slider is the control to change the value.
    * - container holds the control so that it can be styled properly.
    */
-  private Label fieldLabel;
-  private Slider slider;
-  private Label valueLabel;
-  private int min;
-  private int max;
+  protected Slider slider;
+  protected Label valueLabel;
+  protected int min;
+  protected int max;
 
   /**
    * Creates a slider for integer values.

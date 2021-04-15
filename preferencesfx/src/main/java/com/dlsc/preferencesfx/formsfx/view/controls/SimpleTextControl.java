@@ -45,10 +45,9 @@ public class SimpleTextControl extends SimpleControl<StringField, StackPane> {
    * - The editableField allows users to modify the field's value.
    * - The readOnlyLabel displays the field's value if it is not editable.
    */
-  private TextField editableField;
-  private TextArea editableArea;
-  private Label readOnlyLabel;
-  private Label fieldLabel;
+  protected TextField editableField;
+  protected TextArea editableArea;
+  protected Label readOnlyLabel;
 
   /**
    * {@inheritDoc}
