@@ -31,8 +31,6 @@ public class ToggleControl extends SimpleControl<BooleanField, ToggleSwitch> {
 
     node = new ToggleSwitch();
     node.getStyleClass().add("toggle-control");
-    // is necessary to offset the control to the left, because we don't use the provided label
-    node.setTranslateX(NEGATIVE_LABEL_INSETS);
     node.setSelected(field.getValue());
   }
 

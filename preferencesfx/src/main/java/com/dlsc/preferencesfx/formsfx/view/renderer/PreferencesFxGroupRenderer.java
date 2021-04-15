@@ -29,16 +29,16 @@ public class PreferencesFxGroupRenderer {
    */
   private static final int COLUMN_COUNT = 12;
   public static final int GRID_MARGIN = 10;
-  private Label titleLabel;
-  private GridPane grid;
-  private PreferencesFxGroup preferencesGroup;
+  public Label titleLabel;
+  public GridPane grid;
+  public PreferencesFxGroup preferencesGroup;
 
   /**
    * This is the constructor to pass over data.
    *
    * @param preferencesGroup The PreferencesGroup which gets rendered.
    */
-  PreferencesFxGroupRenderer(PreferencesFxGroup preferencesGroup, GridPane grid) {
+  public PreferencesFxGroupRenderer(PreferencesFxGroup preferencesGroup, GridPane grid) {
     this.preferencesGroup = preferencesGroup;
     this.grid = grid;
     preferencesGroup.setRenderer(this);
@@ -82,15 +82,15 @@ public class PreferencesFxGroupRenderer {
         .collect(Collectors.toList());
     styleClass.append("-setting");
 
-    int rowAmount = nextRow;
+    int currRow = nextRow;
     for (int i = 0; i < elements.size(); i++) {
       // add to GridPane
       Element element = elements.get(i);
       if (element instanceof Field) {
         SimpleControl c = (SimpleControl) ((Field)element).getRenderer();
         c.setField((Field)element);
-        grid.add(c.getFieldLabel(), 0, i + rowAmount, 1, 1);
-        grid.add(c.getNode(), 1, i + rowAmount, 1, 1);
+        grid.add(c.getFieldLabel(), 0, currRow++, 1, 1);
+        grid.add(c.getNode(), 0, currRow++, 1, 1);
 
         // Styling
         GridPane.setHgrow(c.getNode(), Priority.SOMETIMES);
@@ -104,10 +104,6 @@ public class PreferencesFxGroupRenderer {
               c.getNode(),
               new Insets(0, 0, PreferencesFxFormRenderer.SPACING * 4, 0)
           );
-          GridPane.setMargin(
-              c.getFieldLabel(),
-              new Insets(0, 0, PreferencesFxFormRenderer.SPACING * 4, 0)
-          );
         }
 
         c.getFieldLabel().getStyleClass().add(styleClass.toString() + "-label");
@@ -115,7 +111,7 @@ public class PreferencesFxGroupRenderer {
       }
       if (element instanceof NodeElement) {
         NodeElement nodeElement = (NodeElement) element;
-        grid.add(nodeElement.getNode(), 0, i + rowAmount, GridPane.REMAINING, 1);
+        grid.add(nodeElement.getNode(), 0, currRow++, GridPane.REMAINING, 1);
       }
     }
   }

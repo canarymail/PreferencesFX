@@ -142,22 +142,22 @@
                     </dependency>
                 </dependencies>
                 <executions>
-                    <execution>
-                        <id>make-docs
+<!--                    <execution>-->
+<!--                        <id>make-docs-->
 
-                        </id> <!-- this is used for inheritance merges -->
-                        <phase>package
-                        </phase> <!-- bind to the packaging phase -->
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
+<!--                        </id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
+<!--                        <phase>package-->
+<!--                        </phase> &lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
+<!--                        <goals>-->
+<!--                            <goal>aggregate</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>attach-javadocs</id>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
 

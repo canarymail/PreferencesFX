@@ -72,27 +72,6 @@
                         <project-version>${project.version}</project-version>
                     </attributes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>asciidoc-to-html</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>html5</backend>
-                            <sourceHighlighter>coderay</sourceHighlighter>
-                            <attributes>
-                                <coderay-linenums-mode>table</coderay-linenums-mode>
-                                <imagesdir></imagesdir>
-                                <toc>left</toc>
-                                <icons>font</icons>
-                                <linkattrs>true</linkattrs>
-                                <encoding>utf-8</encoding>
-                            </attributes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

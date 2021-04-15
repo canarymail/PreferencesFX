@@ -43,7 +43,7 @@ public class CategoryView extends StackPane implements View {
    * @implNote This can't be done in the constructor, since the form has to be initialized by the
    *           corresponding presenter first.
    */
-  void initializeFormRenderer(Form form) {
+  public void initializeFormRenderer(Form form) {
     getChildren().clear();
     preferencesFormRenderer = new PreferencesFxFormRenderer(form);
     getChildren().add(preferencesFormRenderer);
