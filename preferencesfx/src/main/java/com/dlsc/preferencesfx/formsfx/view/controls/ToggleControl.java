@@ -32,6 +32,14 @@ public class ToggleControl extends SimpleControl<BooleanField, ToggleSwitch> {
     node = new ToggleSwitch();
     node.getStyleClass().add("toggle-control");
     node.setSelected(field.getValue());
+    updateText();
+  }
+
+  /**
+   * Set the toggle text on state change.
+   */
+  public void updateText() {
+    node.setText(field.getValue() ? "On" : "Off");
   }
 
   /**
@@ -58,6 +66,7 @@ public class ToggleControl extends SimpleControl<BooleanField, ToggleSwitch> {
     super.setupValueChangedListeners();
     field.userInputProperty().addListener((observable, oldValue, newValue) -> {
       node.setSelected(Boolean.parseBoolean(field.getUserInput()));
+      updateText();
     });
   }
 
