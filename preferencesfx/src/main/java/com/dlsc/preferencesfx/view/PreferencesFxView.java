@@ -22,11 +22,11 @@ public class PreferencesFxView extends BorderPane implements View {
       LoggerFactory.getLogger(PreferencesFxView.class.getName());
 
   CategoryController categoryController;
-  MasterDetailPane preferencesPane;
-  VBox contentBox;
+  public MasterDetailPane preferencesPane;
+  public VBox contentBox;
   private PreferencesFxModel model;
-  private NavigationView navigationView;
-  private BreadCrumbView breadCrumbView;
+  public NavigationView navigationView;
+  public BreadCrumbView breadCrumbView;
 
   /**
    * Displays all of the view parts, representing the master view.
