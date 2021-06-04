@@ -25,8 +25,8 @@ public class NavigationView extends VBox implements View {
   private static final Logger LOGGER =
       LoggerFactory.getLogger(NavigationView.class.getName());
 
-  CustomTextField searchFld;
-  TreeView<Category> treeView;
+  public CustomTextField searchFld;
+  public TreeView<Category> treeView;
   FilterableTreeItem<Category> rootItem;
   private PreferencesFxModel model;
 
