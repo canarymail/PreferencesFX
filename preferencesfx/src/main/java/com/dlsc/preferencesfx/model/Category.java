@@ -34,6 +34,7 @@ public class Category {
   private final StringProperty breadcrumb = new SimpleStringProperty("");
   private Node itemIcon;
   private boolean expand = false;
+  public boolean displayView = true;
 
   /**
    * Creates a category without groups, for top-level categories without any settings.
