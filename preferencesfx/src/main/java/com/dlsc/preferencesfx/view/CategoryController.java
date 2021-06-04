@@ -70,7 +70,7 @@ public class CategoryController extends ScrollPane {
   public boolean setView(final Category category) {
     LOGGER.trace("CategoryController, setView: " + category);
     CategoryView categoryView = views.get(category);
-    if (categoryView != null && categoryView.getChildren().size() > 0) { // view is loaded
+    if (categoryView != null && category.displayView) { // view is loaded
       setContent(categoryView);
       // Binding for ScrollPane
       categoryView.minWidthProperty().bind(widthProperty().subtract(SCROLLBAR_SUBTRACT));
