@@ -7,6 +7,7 @@ import java.util.HashMap;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ public class CategoryController extends ScrollPane {
 
   private HashMap<Category, CategoryView> views = new HashMap<>();
   private HashMap<Category, CategoryPresenter> presenters = new HashMap<>();
+  public Label prefsTitle = new Label();
 
   /**
    * Initializes the category controller.
@@ -35,6 +37,7 @@ public class CategoryController extends ScrollPane {
   public CategoryController() {
     // removes the border around the scrollpane
     setStyle("-fx-background-color:transparent;");
+    prefsTitle.getStyleClass().add("prefs-title");
   }
 
   /**
@@ -71,6 +74,7 @@ public class CategoryController extends ScrollPane {
     LOGGER.trace("CategoryController, setView: " + category);
     CategoryView categoryView = views.get(category);
     if (categoryView != null && category.displayView) { // view is loaded
+      prefsTitle.setText(category.getDescription());
       setContent(categoryView);
       // Binding for ScrollPane
       categoryView.minWidthProperty().bind(widthProperty().subtract(SCROLLBAR_SUBTRACT));

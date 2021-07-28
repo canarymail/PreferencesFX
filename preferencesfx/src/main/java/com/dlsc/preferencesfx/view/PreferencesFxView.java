@@ -73,7 +73,7 @@ public class PreferencesFxView extends BorderPane implements View {
   @Override
   public void layoutParts() {
     // but always add the categoryController
-    contentBox.getChildren().addAll(breadCrumbView, categoryController);
+    contentBox.getChildren().addAll(categoryController.prefsTitle, categoryController);
     VBox.setVgrow(categoryController, Priority.ALWAYS);
 
     if (!model.isOneCategoryLayout()) {
