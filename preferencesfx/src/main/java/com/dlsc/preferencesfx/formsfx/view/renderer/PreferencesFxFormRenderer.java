@@ -21,7 +21,11 @@ public class PreferencesFxFormRenderer extends GridPane implements ViewMixin {
    * SPACING is used to set the spacing of the group as well as the
    * spacing for vertical/horizontal gaps between controls.
    */
-  public static final double SPACING = 5;
+  public static double V_GAP = 5;
+  public static double H_GAP = 5;
+  public static double PADDING = 5;
+  public static double GROUP_SPACING = 5;
+
 
   public Form form;
   public List<PreferencesFxGroupRenderer> groups = new ArrayList<>();
@@ -57,8 +61,8 @@ public class PreferencesFxFormRenderer extends GridPane implements ViewMixin {
   @Override
   public void layoutParts() {
     // Outer Padding of Category Pane
-    setPadding(new Insets(SPACING * 3));
-    setHgap(SPACING * 3);
-    setVgap(SPACING * 2);
+    setPadding(new Insets(PADDING * 3));
+    setHgap(H_GAP * 3);
+    setVgap(V_GAP * 2);
   }
 }

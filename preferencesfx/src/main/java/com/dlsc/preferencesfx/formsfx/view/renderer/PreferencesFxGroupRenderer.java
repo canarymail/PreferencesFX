@@ -8,10 +8,12 @@ import com.dlsc.preferencesfx.util.PreferencesFxUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 /**
  * This class renders a group for a PreferencesFx form.
@@ -89,20 +91,23 @@ public class PreferencesFxGroupRenderer {
       if (element instanceof Field) {
         SimpleControl c = (SimpleControl) ((Field)element).getRenderer();
         c.setField((Field)element);
-        grid.add(c.getFieldLabel(), 0, currRow++, 1, 1);
-        grid.add(c.getNode(), 0, currRow++, 1, 1);
+
+        VBox box = new VBox();
+        box.getChildren().addAll(c.getFieldLabel(), c.getNode());
+        grid.add(box, 0, currRow++, 1, 1);
 
         // Styling
-        GridPane.setHgrow(c.getNode(), Priority.SOMETIMES);
-        GridPane.setValignment(c.getNode(), VPos.CENTER);
-        GridPane.setValignment(c.getFieldLabel(), VPos.CENTER);
+        box.setAlignment(Pos.CENTER_LEFT);
+        box.setSpacing(PreferencesFxFormRenderer.V_GAP);
+        GridPane.setHgrow(box, Priority.SOMETIMES);
+        GridPane.setValignment(box, VPos.CENTER);
 
         // additional styling for the last setting
         if (i == elements.size() - 1) {
           styleClass.append("-last");
           GridPane.setMargin(
-              c.getNode(),
-              new Insets(0, 0, PreferencesFxFormRenderer.SPACING * 4, 0)
+              box,
+              new Insets(0, 0, PreferencesFxFormRenderer.GROUP_SPACING * 4, 0)
           );
         }
 
