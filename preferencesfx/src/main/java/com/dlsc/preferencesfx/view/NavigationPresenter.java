@@ -161,6 +161,13 @@ public class NavigationPresenter implements Presenter {
           setGraphic(category.getItemIcon());
         }
       }
+
+      @Override
+      public void updateSelected(boolean b) {
+        if (getSelectedCategory() != null && getSelectedCategory().displayView) {
+          super.updateSelected(b);
+        }
+      }
     });
   }
 
