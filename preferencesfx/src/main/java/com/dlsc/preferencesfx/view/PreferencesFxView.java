@@ -21,7 +21,7 @@ public class PreferencesFxView extends BorderPane implements View {
   private static final Logger LOGGER =
       LoggerFactory.getLogger(PreferencesFxView.class.getName());
 
-  CategoryController categoryController;
+  public CategoryController categoryController;
   public MasterDetailPane preferencesPane;
   public VBox contentBox;
   private PreferencesFxModel model;

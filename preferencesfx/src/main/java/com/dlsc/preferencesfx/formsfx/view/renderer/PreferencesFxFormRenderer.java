@@ -23,7 +23,7 @@ public class PreferencesFxFormRenderer extends GridPane implements ViewMixin {
    */
   public static double V_GAP = 5;
   public static double H_GAP = 5;
-  public static double PADDING = 5;
+  public static double PADDING = 15;
   public static double GROUP_SPACING = 5;
 
 
@@ -61,7 +61,7 @@ public class PreferencesFxFormRenderer extends GridPane implements ViewMixin {
   @Override
   public void layoutParts() {
     // Outer Padding of Category Pane
-    setPadding(new Insets(PADDING * 3));
+    setPadding(new Insets(PADDING));
     setHgap(H_GAP * 3);
     setVgap(V_GAP * 2);
   }
