@@ -260,7 +260,7 @@ public class Category {
     this.breadcrumb.set(breadcrumb);
   }
 
-  public ReadOnlyStringProperty descriptionProperty() {
+  public StringProperty descriptionProperty() {
     return description;
   }
 
