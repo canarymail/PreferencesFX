@@ -14,6 +14,7 @@ public class PrefTreeCellSkin<T> extends TreeCellSkin<T> {
 
   @Override
   protected void layoutChildren(double v, double v1, double v2, double v3) {
+    setIndent(24);
     super.layoutChildren(v, v1, v2, v3);
 
     Node disclosureNode = getSkinnable().getDisclosureNode();

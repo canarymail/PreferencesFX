@@ -9,7 +9,6 @@ import com.dlsc.preferencesfx.view.CategoryView;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
@@ -233,6 +232,10 @@ public class Category {
 
   public String getDescription() {
     return description.get();
+  }
+
+  public void setDescription(String description) {
+    this.description.set(description);
   }
 
   public List<Group> getGroups() {
