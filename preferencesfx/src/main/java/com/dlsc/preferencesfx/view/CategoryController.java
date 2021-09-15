@@ -36,7 +36,6 @@ public class CategoryController extends ScrollPane {
    */
   public CategoryController() {
     // removes the border around the scrollpane
-    setStyle("-fx-background-color:transparent;");
     prefsTitle.getStyleClass().add("prefs-title");
   }
 

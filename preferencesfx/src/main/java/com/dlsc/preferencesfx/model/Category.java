@@ -151,6 +151,11 @@ public class Category {
     return this;
   }
 
+  public Category displayView(boolean displayView)  {
+    this.displayView = displayView;
+    return this;
+  }
+
   /**
    * Creates and defines all of the breadcrumbs for all of the categories.
    *
