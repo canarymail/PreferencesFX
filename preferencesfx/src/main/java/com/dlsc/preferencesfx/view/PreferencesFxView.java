@@ -21,7 +21,7 @@ public class PreferencesFxView extends BorderPane implements View {
   private static final Logger LOGGER =
       LoggerFactory.getLogger(PreferencesFxView.class.getName());
 
-  CategoryController categoryController;
+  public CategoryController categoryController;
   public MasterDetailPane preferencesPane;
   public VBox contentBox;
   private PreferencesFxModel model;
@@ -73,7 +73,7 @@ public class PreferencesFxView extends BorderPane implements View {
   @Override
   public void layoutParts() {
     // but always add the categoryController
-    contentBox.getChildren().addAll(breadCrumbView, categoryController);
+    contentBox.getChildren().addAll(categoryController.prefsTitle, categoryController);
     VBox.setVgrow(categoryController, Priority.ALWAYS);
 
     if (!model.isOneCategoryLayout()) {

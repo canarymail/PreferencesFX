@@ -9,7 +9,6 @@ import com.dlsc.preferencesfx.view.CategoryView;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
@@ -152,6 +151,11 @@ public class Category {
     return this;
   }
 
+  public Category displayView(boolean displayView)  {
+    this.displayView = displayView;
+    return this;
+  }
+
   /**
    * Creates and defines all of the breadcrumbs for all of the categories.
    *
@@ -235,6 +239,10 @@ public class Category {
     return description.get();
   }
 
+  public void setDescription(String description) {
+    this.description.set(description);
+  }
+
   public List<Group> getGroups() {
     return groups;
   }
@@ -260,7 +268,7 @@ public class Category {
     this.breadcrumb.set(breadcrumb);
   }
 
-  public ReadOnlyStringProperty descriptionProperty() {
+  public StringProperty descriptionProperty() {
     return description;
   }
 

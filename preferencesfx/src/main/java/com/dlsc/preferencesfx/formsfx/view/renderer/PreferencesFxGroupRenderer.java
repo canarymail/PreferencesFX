@@ -8,10 +8,12 @@ import com.dlsc.preferencesfx.util.PreferencesFxUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 /**
  * This class renders a group for a PreferencesFx form.
@@ -86,32 +88,32 @@ public class PreferencesFxGroupRenderer {
     for (int i = 0; i < elements.size(); i++) {
       // add to GridPane
       Element element = elements.get(i);
+      VBox box = new VBox();
       if (element instanceof Field) {
         SimpleControl c = (SimpleControl) ((Field)element).getRenderer();
         c.setField((Field)element);
-        grid.add(c.getFieldLabel(), 0, currRow++, 1, 1);
-        grid.add(c.getNode(), 0, currRow++, 1, 1);
-
-        // Styling
-        GridPane.setHgrow(c.getNode(), Priority.SOMETIMES);
-        GridPane.setValignment(c.getNode(), VPos.CENTER);
-        GridPane.setValignment(c.getFieldLabel(), VPos.CENTER);
-
-        // additional styling for the last setting
-        if (i == elements.size() - 1) {
-          styleClass.append("-last");
-          GridPane.setMargin(
-              c.getNode(),
-              new Insets(0, 0, PreferencesFxFormRenderer.SPACING * 4, 0)
-          );
-        }
-
         c.getFieldLabel().getStyleClass().add(styleClass.toString() + "-label");
         c.getNode().getStyleClass().add(styleClass.toString() + "-node");
+        box.getChildren().addAll(c.getFieldLabel(), c.getNode());
+      } else if (element instanceof NodeElement) {
+        box.getChildren().addAll(((NodeElement<?>) element).getNode());
       }
-      if (element instanceof NodeElement) {
-        NodeElement nodeElement = (NodeElement) element;
-        grid.add(nodeElement.getNode(), 0, currRow++, GridPane.REMAINING, 1);
+
+      grid.add(box, 0, currRow++, 1, 1);
+
+      // Styling
+      box.setAlignment(Pos.CENTER_LEFT);
+      box.setSpacing(PreferencesFxFormRenderer.V_GAP);
+      GridPane.setHgrow(box, Priority.SOMETIMES);
+      GridPane.setValignment(box, VPos.CENTER);
+
+      // additional styling for the last setting
+      if (i == elements.size() - 1) {
+        styleClass.append("-last");
+        GridPane.setMargin(
+            box,
+            new Insets(0, 0, PreferencesFxFormRenderer.GROUP_SPACING * 4, 0)
+        );
       }
     }
   }

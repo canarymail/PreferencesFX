@@ -7,6 +7,7 @@ import java.util.HashMap;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,13 +29,14 @@ public class CategoryController extends ScrollPane {
 
   private HashMap<Category, CategoryView> views = new HashMap<>();
   private HashMap<Category, CategoryPresenter> presenters = new HashMap<>();
+  public Label prefsTitle = new Label();
 
   /**
    * Initializes the category controller.
    */
   public CategoryController() {
     // removes the border around the scrollpane
-    setStyle("-fx-background-color:transparent;");
+    prefsTitle.getStyleClass().add("prefs-title");
   }
 
   /**
@@ -60,6 +62,23 @@ public class CategoryController extends ScrollPane {
   }
 
   /**
+    * updateViews.
+    *
+    * @param oldCategory the oldCategory
+    * @param newCategory the newCategory
+    */
+  public void updateView(Category oldCategory, Category newCategory) {
+    CategoryView view = views.get(oldCategory);
+    CategoryPresenter presenter = presenters.get(oldCategory);
+    view.categoryModel = newCategory;
+    presenter.updateCategory(newCategory);
+    views.remove(oldCategory);
+    presenters.remove(oldCategory);
+    views.put(newCategory, view);
+    presenters.put(newCategory, presenter);
+  }
+
+  /**
    * Sets the current view to the one of the respective category.
    * This method can be called in the presenter to switch to a different CategoryView.
    * Controls the way views are being transitioned from one to another.
@@ -71,6 +90,8 @@ public class CategoryController extends ScrollPane {
     LOGGER.trace("CategoryController, setView: " + category);
     CategoryView categoryView = views.get(category);
     if (categoryView != null && category.displayView) { // view is loaded
+      prefsTitle.textProperty().unbind();
+      prefsTitle.textProperty().bind(category.descriptionProperty());
       setContent(categoryView);
       // Binding for ScrollPane
       categoryView.minWidthProperty().bind(widthProperty().subtract(SCROLLBAR_SUBTRACT));

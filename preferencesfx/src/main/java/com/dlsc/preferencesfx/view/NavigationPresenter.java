@@ -2,10 +2,11 @@ package com.dlsc.preferencesfx.view;
 
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.PreferencesFxModel;
+import com.dlsc.preferencesfx.objects.PrefTreeCell;
 import com.dlsc.preferencesfx.util.SearchHandler;
 import java.util.HashMap;
 import java.util.List;
-import javafx.scene.control.TreeCell;
+
 import javafx.scene.control.TreeItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,6 +123,18 @@ public class NavigationPresenter implements Presenter {
   }
 
   /**
+   * {@inheritDoc}
+   */
+  public void refreshCategory(Category oldCategory, Category newCategory) {
+    FilterableTreeItem<Category> item = categoryTreeItemMap.get(oldCategory);
+    if (item != null) {
+      item.setValue(newCategory);
+      categoryTreeItemMap.remove(oldCategory);
+      categoryTreeItemMap.put(newCategory, item);
+    }
+  }
+
+  /**
    * Retrieves the currently selected category in the TreeSearchView.
    *
    * @return the currently selected category
@@ -148,20 +161,7 @@ public class NavigationPresenter implements Presenter {
    * Makes the TreeItems' text update when the description of a Category changes (due to i18n).
    */
   public void setupCellValueFactory() {
-    navigationView.treeView.setCellFactory(param -> new TreeCell<Category>() {
-      @Override
-      protected void updateItem(Category category, boolean empty) {
-        super.updateItem(category, empty);
-        textProperty().unbind();
-        if (empty || category == null) {
-          setText(null);
-          setGraphic(null);
-        } else {
-          textProperty().bind(category.descriptionProperty());
-          setGraphic(category.getItemIcon());
-        }
-      }
-    });
+    navigationView.treeView.setCellFactory(param -> new PrefTreeCell());
   }
 
 }
