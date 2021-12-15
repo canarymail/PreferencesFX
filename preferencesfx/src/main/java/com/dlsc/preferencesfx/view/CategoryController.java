@@ -62,6 +62,23 @@ public class CategoryController extends ScrollPane {
   }
 
   /**
+    * updateViews.
+    *
+    * @param oldCategory the oldCategory
+    * @param newCategory the newCategory
+    */
+  public void updateView(Category oldCategory, Category newCategory) {
+    CategoryView view = views.get(oldCategory);
+    CategoryPresenter presenter = presenters.get(oldCategory);
+    view.categoryModel = newCategory;
+    presenter.updateCategory(newCategory);
+    views.remove(oldCategory);
+    presenters.remove(oldCategory);
+    views.put(newCategory, view);
+    presenters.put(newCategory, presenter);
+  }
+
+  /**
    * Sets the current view to the one of the respective category.
    * This method can be called in the presenter to switch to a different CategoryView.
    * Controls the way views are being transitioned from one to another.

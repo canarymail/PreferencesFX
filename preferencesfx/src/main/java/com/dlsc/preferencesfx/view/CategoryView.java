@@ -21,7 +21,7 @@ public class CategoryView extends StackPane implements View {
       LoggerFactory.getLogger(CategoryView.class.getName());
 
   private PreferencesFxModel model;
-  private Category categoryModel;
+  public Category categoryModel;
   private PreferencesFxFormRenderer preferencesFormRenderer;
 
   /**

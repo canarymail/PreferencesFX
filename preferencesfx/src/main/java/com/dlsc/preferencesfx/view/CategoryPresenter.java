@@ -62,6 +62,15 @@ public class CategoryPresenter implements Presenter {
     addInstantPersistenceListener();
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  public void updateCategory(Category newCategory) {
+    categoryModel = newCategory;
+    form = createForm();
+    categoryView.initializeFormRenderer(form);
+  }
+
   private void addInstantPersistenceListener() {
     model.instantPersistentProperty().addListener((observable, oldPersistence, newPersistence) -> {
       applyInstantPersistence(newPersistence, form);

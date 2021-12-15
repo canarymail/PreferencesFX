@@ -37,7 +37,7 @@ public class PreferencesFx {
   private PreferencesFxModel preferencesFxModel;
 
   private NavigationView navigationView;
-  private NavigationPresenter navigationPresenter;
+  public NavigationPresenter navigationPresenter;
 
   private UndoRedoBox undoRedoBox;
 
@@ -125,6 +125,14 @@ public class PreferencesFx {
       );
       categoryController.addView(category, categoryView, categoryPresenter);
     });
+  }
+
+  /**
+   * updateViews.
+   */
+  public void updateCategoryView(Category oldCategory, Category newCategory) {
+    navigationPresenter.refreshCategory(oldCategory, newCategory);
+    categoryController.updateView(oldCategory, newCategory);
   }
 
   /**

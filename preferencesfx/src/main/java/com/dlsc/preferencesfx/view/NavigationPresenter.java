@@ -123,6 +123,18 @@ public class NavigationPresenter implements Presenter {
   }
 
   /**
+   * {@inheritDoc}
+   */
+  public void refreshCategory(Category oldCategory, Category newCategory) {
+    FilterableTreeItem<Category> item = categoryTreeItemMap.get(oldCategory);
+    if (item != null) {
+      item.setValue(newCategory);
+      categoryTreeItemMap.remove(oldCategory);
+      categoryTreeItemMap.put(newCategory, item);
+    }
+  }
+
+  /**
    * Retrieves the currently selected category in the TreeSearchView.
    *
    * @return the currently selected category
